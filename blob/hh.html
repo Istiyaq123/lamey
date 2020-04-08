@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <video controls></video>
+    <script>
+      var video = document.querySelector('video');
+
+      var assetURL = 'https://r4---sn-aigzrn7z.c.drive.google.com/videoplayback?expire=1586398993&ei=0U6OXo2_NpOK-gWAzJyIBw&ip=86.133.92.213&cp=QVNNWERfV1lXRFhOOmFsTlhPa1pHQUVmTHBNY3hJeTlhMXMzdXNIdHlZbnlXY2JjN0RHa2NaeDU&id=1f0747bd2692a5b4&itag=18&source=webdrive&requiressl=yes&mh=J2&mm=30&mn=sn-aigzrn7z&ms=nxu&mv=m&mvi=3&pl=25&sc=yes&ttl=transient&susc=dr&driveid=1JIrESQtzxy99vbZbUXRjweuDYlofl46b&app=explorer&mime=video/mp4&dur=49.063&lmt=1546849525814276&mt=1586384479&sparams=expire,ei,ip,cp,id,itag,source,requiressl,ttl,susc,driveid,app,mime,dur,lmt&sig=AJpPlLswRAIgAr917saE3DIGw0Qq4qYZ4DUNLeXPl8BvQKTedHLtJpUCIGH5T1Ww3W5JRXsRwSrXg9avj24rp6DMuEF__gaOw6uN&lsparams=mh,mm,mn,ms,mv,mvi,pl,sc&lsig=ALrAebAwRgIhAMVz6hAx3YMQYorMw0QEFxr1GekxPuII4m1qMt3nwxg_AiEAth1RI2N85u7ghMKWwoxwX9oRbe01elQUDmm-xm9Io3M=&cpn=xv37TFfplONRHmFa&c=WEB_EMBEDDED_PLAYER&cver=20200406';
+      // Need to be specific for Blink regarding codecs
+      // ./mp4info frag_bunny.mp4 | grep Codec
+      var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+
+      if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
+        var mediaSource = new MediaSource;
+        //console.log(mediaSource.readyState); // closed
+        video.src = URL.createObjectURL(mediaSource);
+        mediaSource.addEventListener('sourceopen', sourceOpen);
+      } else {
+        console.error('Unsupported MIME type or codec: ', mimeCodec);
+      }
+
+      function sourceOpen (_) {
+        //console.log(this.readyState); // open
+        var mediaSource = this;
+        var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+        fetchAB(assetURL, function (buf) {
+          sourceBuffer.addEventListener('updateend', function (_) {
+            mediaSource.endOfStream();
+            video.play();
+            //console.log(mediaSource.readyState); // ended
+          });
+          sourceBuffer.appendBuffer(buf);
+        });
+      };
+
+      function fetchAB (url, cb) {
+        console.log(url);
+        var xhr = new XMLHttpRequest;
+        xhr.open('get', url);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function () {
+          cb(xhr.response);
+        };
+        xhr.send();
+      };
+    </script>
+  </body>
+</html>
