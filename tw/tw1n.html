@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Adobe Analytics -->
+    <script id="AdobeAnalyticsDataLayer"></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N8M6X67');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Start SmartBanner configuration -->
+    <meta name="smartbanner:title" content="Pokémon TV">
+    <meta name="smartbanner:author" content="The Pokemon Company International, Inc.">
+    <meta name="smartbanner:price" content="Free">
+    <meta name="smartbanner:price-suffix-apple" content=" - On the App Store">
+    <meta name="smartbanner:price-suffix-google" content=" - On Google Play">
+    <meta name="smartbanner:icon-apple" content="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/c4/e2/9f/c4e29f3c-9212-5bcd-2632-314ccf5da3f2/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-10.png/246x0w.jpg">
+    <meta name="smartbanner:icon-google" content="https://lh3.googleusercontent.com/hPWoTztuOCTMsWUDbNp0UUrAuKO0_sX5qxc6YD6yW8uO9p6GsqdrlVZOxxfvmVO-boo=s360-rw">
+    <meta name="smartbanner:button" content="View">
+    <meta name="smartbanner:button-url-apple" content="https://itunes.apple.com/us/app/pokemon-tv/id594261405?mt=8">
+    <meta name="smartbanner:button-url-google" content="https://play.google.com/store/apps/details?id=com.pokemontv">
+    <meta name="smartbanner:enabled-platforms" content="android,ios">
+    <!-- End SmartBanner configuration -->
+    <title>Watch Pokémon TV</title>
+    <!-- <link rel="dns-prefetch" href="//code.jquery.com/" /> -->
+    <link rel="dns-prefetch" href="//stackpath.bootstrapcdn.com" />
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+    <!-- Font Awesome library, includes social icons and other usefull icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous" />
+    <link rel="stylesheet" href="watch.pokemon.com/styles/main.css" />
+    <link rel="stylesheet" href="watch.pokemon.com/styles/libs.css" />
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
+    <link rel="stylesheet prefetch"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/gus.css" media="all" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="watch.pokemon.com/images/favicon.ico" />
+    <script>
+        var translations = {            
+            new_episodes: "New Episode",
+            watch_now: "Watch Now",
+            advertisement: "Promotion",
+            check_now: "Check Now",
+            continue_watch: "Continue Watching",
+            season: "Season", 
+            episode: "Episode",
+            episodes: "Episodes",
+            up_next: "Up Next",
+            season_min: "S.",
+            episode_min: "Ep.",
+            watching: "You're Watching",
+            new_in: "Next episode in",
+            seconds: "seconds",
+            home: "Home",
+            download_app: "Download the Pokémon TV App!",
+            pokemon_tv_description: "Watch incredible Pokémon animated adventures starring Ash, Pickachu and all their friends. Don't miss movies, episodes, special animated features and more!",
+            watch_mobile_tablet: "Watch on Mobile or Tablet"
+        }
+
+        var buildVars = {
+            configEndpoint: "https://cdn.studio-prod.pokemon.com/ptv/config.json",
+            buildMode: "prod",
+            language: "en-gb",
+            ssoLang: "en-gb",
+            region: "uk",
+            adobeAnalyticsUrl: "https://assets.adobedtm.com/6c671dc48d6617494938091e9ec0e82bd30f1aef/satelliteLib-2ee565a43581021351f39f2657e3a4f57d825b36.js"
+        }
+    </script>
+</head>
+<body class="c-player">
+    <div class="loader-panel">
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+</div>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8M6X67" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="player" id="playerContainer">
+    </div>
+    <div class="controls">
+    </div>
+    <!-- Script Libraries -->
+<script src="https://watch.pokemon.com//code/libs.js"></script>
+<script src="https://watch.pokemon.com//code/app.js"></script>
+<script type="text/javascript" src="https://assets.pokemon.com/static2/_ui/js/gus.js"></script>
+
+    <!-- Limelight -->
+    <script src="https://video.limelight.com/player/limelightjs-player.js"></script>
+    <script src="https://watch.pokemon.com/code/player.js"></script>
+</body>
+
+</html>
